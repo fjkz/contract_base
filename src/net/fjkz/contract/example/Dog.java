@@ -1,4 +1,4 @@
-package org.junit.contract.example;
+package net.fjkz.contract.example;
 
 public class Dog {
     private String name;

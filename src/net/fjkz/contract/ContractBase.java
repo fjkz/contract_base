@@ -1,4 +1,4 @@
-package org.junit.contract;
+package net.fjkz.contract;
 
 import static org.junit.Assert.assertNotNull;
 

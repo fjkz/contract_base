@@ -1,4 +1,4 @@
-package org.junit.contract.example;
+package net.fjkz.contract.example;
 
 import static org.junit.Assert.*;
 
