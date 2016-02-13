@@ -2,7 +2,7 @@ package net.fjkz.contract.example;
 
 import static org.junit.Assert.*;
 
-import org.junit.contract.ContractBase;
+import net.fjkz.contract.ContractBase;
 
 public abstract class DogTestBase extends ContractBase<Dog> {
 
