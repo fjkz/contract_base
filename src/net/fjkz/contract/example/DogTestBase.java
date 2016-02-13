@@ -9,12 +9,21 @@ public abstract class DogTestBase extends ContractBase<Dog> {
     // for hiding cast
     protected DogPreconditionBuilder builder() {
         return (DogPreconditionBuilder) builder;
-    };
+    }
 
     @Override
-    protected ContractBase<Dog>.PreconditionBuilder createPreconditionBuilder() {
+    protected ContractBase<Dog>.PreconditionBuilder createPreconditionBuilder() throws Exception {
         return new DogPreconditionBuilder(this);
     }
+
+    @Override
+    protected void commonPreconditions() throws Exception {
+        // fix the name to Hachi.
+        builder().name("Hachi");
+    }
+
+    @Override
+    protected void commonPostconditions() throws Exception {}
 
     @Override
     protected void invaliants() throws Exception {
@@ -26,10 +35,13 @@ public abstract class DogTestBase extends ContractBase<Dog> {
 
     class DogPreconditionBuilder extends PreconditionBuilder {
 
-        public DogPreconditionBuilder(ContractBase<Dog> base) {
+        public DogPreconditionBuilder(ContractBase<Dog> base) throws Exception {
             super(base);
-            // fix the name to Hachi.
-            builded = new Dog("Hachi");
+        }
+
+        public DogPreconditionBuilder name(String name) {
+            builded = new Dog(name);
+            return this;
         }
 
         public DogPreconditionBuilder power(int p) {

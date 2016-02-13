@@ -21,6 +21,7 @@ public abstract class ContractBase<T> {
     public void setUp() throws Exception {
         cleanUp();
         builder = createPreconditionBuilder();
+        commonPreconditions();
     }
 
     @After
@@ -31,7 +32,7 @@ public abstract class ContractBase<T> {
     }
 
     /** Create precondition builder class. */
-    abstract protected PreconditionBuilder createPreconditionBuilder();
+    abstract protected PreconditionBuilder createPreconditionBuilder() throws Exception;
 
     /**
      * Clean up side effect of the operation.
@@ -60,13 +61,12 @@ public abstract class ContractBase<T> {
     /** Test this class itself */
     @Test
     public void self() throws Exception {
-        builder.done();
+        builder.nop().done();
         assertNotNull(tested);
     }
 
     /**
      * Builder class create preconditions.
-     * Add method for each precondition parameter.
      */
     protected class PreconditionBuilder {
         protected T builded;
@@ -77,12 +77,24 @@ public abstract class ContractBase<T> {
         }
 
         /**
-         * Complete to set preconditions.
+         * Sample method with no operation.
+         * Add method like this for each precondition parameter.
+         * @return this
          */
-        public void done() throws Exception {
-            base.tested = this.builded;
-            base.commonPreconditions();
+        public PreconditionBuilder nop() {
+            return this;
+        }
+
+        /**
+         * Set the build result to "tested" field and verify invariants.
+         * Call this when complete to set preconditions.
+         *
+         * @return build result
+         */
+        public T done() throws Exception {
+            base.tested = builded;
             base.invaliants();
+            return builded;
         }
     }
 }

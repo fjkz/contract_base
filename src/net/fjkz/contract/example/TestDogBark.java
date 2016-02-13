@@ -6,12 +6,6 @@ import org.junit.Test;
 
 public class TestDogBark extends DogTestBase {
 
-    @Override
-    protected void commonPreconditions() throws Exception {}
-
-    @Override
-    protected void commonPostconditions() throws Exception {}
-
     @Test
     public void neutral() throws Exception {
         builder().power(5).done();
