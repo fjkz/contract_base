@@ -3,15 +3,16 @@ ContractBase
 
 Java class for creating organized constact-based test cases.
 
-Create test-base class for each class under tests by inheliting `ContractBase` class.
+Create test-base classes for each class under tests by inheliting `ContractBase` class.
 
 ```
- [ContractBase] <--+-- [AClassTestBase]
-                   |
-                   +-- [BClassTestBase]
-                   |
-                   +-- [CClassTestBase]
-
+[ContractBase]
+  |
+  +-- [AClassTestBase]
+  |
+  +-- [BClassTestBase]
+  |
+  +-- [CClassTestBase]
 ```
 
 Test-base classes include
@@ -20,21 +21,33 @@ Test-base classes include
 
 and
 
- - utility assertion functions that helps evaluating postconsitions.
+ - utility assertion functions that helps verifying postconsitions.
 
 Create test classes for each operation about a class by inteliting the test-base class.
 
 ```
-[AClassTestBase] <--+-- [TestAClassMethod1]
-                    |
-                    +-- [TestAClassMethod2]
-                    |
-                    +-- [TestAClassMethod3]
+[AClassTestBase]
+  |
+  +-- [TestAClassMethod1]
+  |
+  +-- [TestAClassMethod2]
+  |
+  +-- [TestAClassMethod3]
 ```
 
-Test classes have test cases for variations about preconditions and operetion arguments.
+Test classes have test cases for variations about preconditions and operetion's arguments.
 
-Test cases are consisted by 4 phases.
+```
+[TestAClassMethod1]
+  |
+  +-- [testCase1]
+  |
+  +-- [testCase2]
+  |
+  +-- [testCase3]
+```
+
+Each test case is consisted by 4 phases.
 
   1. Set preconditions.
   2. Conduct an opeartion.
